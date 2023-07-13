@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../Обнуление стилей.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/4b0e37739b.js" crossorigin="anonymous"></script>
+    <title>Замовлення квитків</title>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="popular">
+            <div class="container">
+                <p class="popular__text text">Подорожуй популярними напрямками</p>
+                <ul class="popular__list">
+                    <li class="popular__list-item">
+                        <button id="popular1">
+                            Київ
+                            <i class="fa-sharp fa-solid fa-arrows-left-right" style="color: #000000;"></i>
+                            Львів
+                        </button>
+                    </li>
+                    <li class="popular__list-item">
+                        <button id="popular2">
+                            Київ
+                            <i class="fa-sharp fa-solid fa-arrows-left-right" style="color: #000000;"></i>
+                            Пшемисль
+                        </button>
+                    </li>
+                    <li class="popular__list-item">
+                        <button id="popular3">
+                            Київ
+                            <i class="fa-sharp fa-solid fa-arrows-left-right" style="color: #000000;"></i>
+                            Дніпро-Головний
+                        </button>
+                    </li>
+                    <li class="popular__list-item">
+                        <button id="popular4">
+                            Київ
+                            <i class="fa-sharp fa-solid fa-arrows-left-right" style="color: #000000;"></i>
+                            Харків
+                        </button>
+                    </li>
+                    <li class="popular__list-item">
+                        <button id="popular5">
+                            Львів
+                            <i class="fa-sharp fa-solid fa-arrows-left-right" style="color: #000000;"></i>
+                            Пшемисль
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="main">
+            <div class="container">
+                <form action="#" class="main__form" method="post" name="form">
+                    <div class="form__content">
+                        <div class="content__upside">
+                            <div class="upside__column-first">
+                                <p class="upside__text text">Звідки</p>
+                                <input type="text" class="upside__input" name="from">
+                                <ul class="upside__hint-list hint-list">
+                                    <li class="hint-list__item"><button class="hint-list__button" id="hint-city1" type="button">Київ</button></li>
+                                    <li class="hint-list__item"><button class="hint-list__button" id="hint-city2" type="button">Львів</button></li>
+                                    <li class="hint-list__item"><button class="hint-list__button" id="hint-city3" type="button">Пшемисль</button></li>
+                                    <li class="hint-list__item"><button class="hint-list__button" id="hint-city4" type="button">Дніпро-Головний</button></li>
+                                    <li class="hint-list__item"><button class="hint-list__button" id="hint-city5" type="button">Одеса</button></li>
+                                </ul>
+                            </div>
+                            <div class="upside__column-second">
+                                <button class="upside__button" id="button-swap" type="button">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="#68B2DD"
+                                        width="30">
+                                        <path
+                                            d="M406.6 374.6l96-96c12.5-12.5 12.5-32.8 0-45.3l-96-96c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L402.7 224l-293.5 0 41.4-41.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-96 96c-12.5 12.5-12.5 32.8 0 45.3l96 96c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 288l293.5 0-41.4 41.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0z" />
+                                    </svg>
+                                </button>
+                            </div>
+                            <div class="upside__column-third">
+                                <p class="upside__text text">Куди</p>
+                                <input type="text" class="upside__input" name="to">
+                                <ul class="upside__hint-list hint-list">
+                                    <li class="hint-list__item"><button class="hint-list__button" id="hint-city6" type="button">Київ</button></li>
+                                    <li class="hint-list__item"><button class="hint-list__button" id="hint-city7" type="button">Львів</button></li>
+                                    <li class="hint-list__item"><button class="hint-list__button" id="hint-city8" type="button">Пшемисль</button></li>
+                                    <li class="hint-list__item"><button class="hint-list__button" id="hint-city9" type="button">Дніпро-Головний</button></li>
+                                    <li class="hint-list__item"><button class="hint-list__button" id="hint-city10" type="button">Одеса</button></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="content__downside">
+                            <div class="downside__date">
+                                <p class="downside__text text">Дата відправлення</p>
+                                <input type="date" class="downside__input" name="date">
+                                <ul class="downside__hint-list hint-list">
+                                    <li class="hint-list__item"><button class="hint-list__button" id="hint-day1" type="button">Сьогодні</button></li>
+                                    <li class="hint-list__item"><button class="hint-list__button" id="hint-day2" type="button">Завтра</button></li>
+                                    <li class="hint-list__item"><button class="hint-list__button" id="hint-day3" type="button">Післязавтра</button>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="downside__time">
+                                <p class="time__text">Час відправлення від</p>
+                                <select name="time" class="time__select">
+                                    <option value="00">00:00</option>
+                                    <option value="01">01:00</option>
+                                    <option value="02">02:00</option>
+                                    <option value="03">03:00</option>
+                                    <option value="04">04:00</option>
+                                    <option value="05">05:00</option>
+                                    <option value="06">06:00</option>
+                                    <option value="07">07:00</option>
+                                    <option value="08">08:00</option>
+                                    <option value="09">09:00</option>
+                                    <option value="10">10:00</option>
+                                    <option value="11">11:00</option>
+                                    <option value="12">12:00</option>
+                                    <option value="13">13:00</option>
+                                    <option value="14">14:00</option>
+                                    <option value="15">15:00</option>
+                                    <option value="16">16:00</option>
+                                    <option value="17">17:00</option>
+                                    <option value="18">18:00</option>
+                                    <option value="19">19:00</option>
+                                    <option value="20">20:00</option>
+                                    <option value="21">21:00</option>
+                                    <option value="22">22:00</option>
+                                    <option value="23">23:00</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="submit">
+            <button class="submit-button" id="submit" type="submit"></button>
+        </div>
+    </div>
+
+
+
+
+    <script src="script.js"></script>
+</body>
+
+</html>
