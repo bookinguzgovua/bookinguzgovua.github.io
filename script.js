@@ -1,32 +1,32 @@
 document.getElementById('popular1').onclick = function () {
-    form.from.value = 'Київ';
-    form.to.value = 'Львів';
+    formPlaces.from.value = 'Київ';
+    formPlaces.to.value = 'Львів';
 }
 document.getElementById('popular2').onclick = function () {
-    form.from.value = 'Київ';
-    form.to.value = 'Пшемисль';
+    formPlaces.from.value = 'Київ';
+    formPlaces.to.value = 'Пшемисль';
 }
 document.getElementById('popular3').onclick = function () {
-    form.from.value = 'Київ';
-    form.to.value = 'Дніпро-головний';
+    formPlaces.from.value = 'Київ';
+    formPlaces.to.value = 'Дніпро-головний';
 }
 document.getElementById('popular4').onclick = function () {
-    form.from.value = 'Київ';
-    form.to.value = 'Харків';
+    formPlaces.from.value = 'Київ';
+    formPlaces.to.value = 'Харків';
 }
 document.getElementById('popular5').onclick = function () {
-    form.from.value = 'Львів';
-    form.to.value = 'Пшемисль';
+    formPlaces.from.value = 'Львів';
+    formPlaces.to.value = 'Пшемисль';
 }
 
 
 
+const buttonSwap = document.getElementById('button-swap');
 
-
-document.getElementById('button-swap').onclick = function () {
-    let a = form.from.value;
-    form.from.value = form.to.value;
-    form.to.value = a;
+buttonSwap.onclick = function () {
+    let a = formPlaces.from.value;
+    formPlaces.from.value = formPlaces.to.value;
+    formPlaces.to.value = a;
 }
 
 
@@ -34,73 +34,252 @@ document.getElementById('button-swap').onclick = function () {
 
 
 document.getElementById('hint-city1').onclick = function () {
-    form.from.value = 'Київ'
+    formPlaces.from.value = 'Київ'
 }
 document.getElementById('hint-city2').onclick = function () {
-    form.from.value = 'Львів'
+    formPlaces.from.value = 'Львів'
 }
 document.getElementById('hint-city3').onclick = function () {
-    form.from.value = 'Пшемисль'
+    formPlaces.from.value = 'Пшемисль'
 }
 document.getElementById('hint-city4').onclick = function () {
-    form.from.value = 'Дніпро-головний'
+    formPlaces.from.value = 'Дніпро-головний'
 }
 document.getElementById('hint-city5').onclick = function () {
-    form.from.value = 'Одеса'
+    formPlaces.from.value = 'Одеса'
 }
 
 
 
 document.getElementById('hint-city6').onclick = function () {
-    form.to.value = 'Київ'
+    formPlaces.to.value = 'Київ'
 }
 document.getElementById('hint-city7').onclick = function () {
-    form.to.value = 'Львів'
+    formPlaces.to.value = 'Львів'
 }
 document.getElementById('hint-city8').onclick = function () {
-    form.to.value = 'Пшемисль'
+    formPlaces.to.value = 'Пшемисль'
 }
 document.getElementById('hint-city9').onclick = function () {
-    form.to.value = 'Дніпро-головний'
+    formPlaces.to.value = 'Дніпро-головний'
 }
 document.getElementById('hint-city10').onclick = function () {
-    form.to.value = 'Одеса'
+    formPlaces.to.value = 'Одеса'
 }
 
 
 
 
 
-var today = new Date();
-var year = today.getFullYear();
-var month = ('0' + (today.getMonth() + 1)).slice(-2);
-var day = ('0' + today.getDate()).slice(-2);
+let today = new Date();
+let year = today.getFullYear();
+let month = today.getMonth() + 1;
+if (month < 10) month = '0' + month
+let day = today.getDate();
+if (day < 10) day = '0' + day
 
-form.date.value = year + '-' + month + '-' + day;
+
+formPlaces.date.value = year + '-' + month + '-' + day;
 
 today.setDate(today.getDate() + 1);
-var tomorrow = today.getDate();
+let tomorrow = today.getDate();
 today.setDate(today.getDate() + 1);
-var afterTomorrow = today.getDate();
+let afterTomorrow = today.getDate();
 
 document.getElementById('hint-day1').onclick = function () {
-    form.date.value = year + '-' + month + '-' + day;
+    formPlaces.date.value = year + '-' + month + '-' + day;
 }
 document.getElementById('hint-day2').onclick = function () {
-    form.date.value = year + '-' + month + '-' + tomorrow;
+    formPlaces.date.value = year + '-' + month + '-' + tomorrow;
 }
 document.getElementById('hint-day3').onclick = function () {
-    form.date.value = year + '-' + month + '-' + afterTomorrow;
+    formPlaces.date.value = year + '-' + month + '-' + afterTomorrow;
+}
+
+
+const inputDate = document.querySelector('.downside__input')
+const buttonSubmit = document.getElementById('submit')
+const alertSubmit = document.querySelector('.submit__alert')
+
+
+buttonSubmit.textContent = 'Пошук поїздів на ' + day + '.' + month + '.' + year;
+
+let submitString, submitDay, submitMonth, submitYear
+
+inputDate.addEventListener('change', () => {
+    submitString = formPlaces.date.value.toString();
+    submitDay = submitString[8] + submitString[9];
+    submitMonth = submitString[5] + submitString[6];
+    submitYear = submitString[0] + submitString[1] + submitString[2] + submitString[3];
+    buttonSubmit.textContent = 'Пошук поїздів на ' + submitDay + '.' + submitMonth + '.' + submitYear;
+
+    if (submitString === '') {
+        buttonSubmit.textContent = 'Пошук поїздів на ' + day + '.' + month + '.' + year;
+    }
+})
+
+const allTables = document.querySelectorAll('.table')
+
+buttonSubmit.onclick = () => {
+    if ((submitYear < year) || (submitMonth < month && submitYear <= year) || (submitDay < day && submitMonth <= month)) {
+        alertSubmit.style.display = 'block';
+        alertSubmit.textContent = 'Обрана дата вже минула'
+
+        allTables.forEach(table => {
+            table.style.display = 'none'
+        })
+    }
+
+    else if (formPlaces.from.value === '' || formPlaces.to.value === '') {
+        alertSubmit.style.display = 'block';
+        alertSubmit.textContent = 'Заповніть усі поля'
+
+        allTables.forEach(table => {
+            table.style.display = 'none'
+        })
+    }
+
+    else {
+        alertSubmit.style.display = 'none';
+
+        allTables.forEach(table => {
+            table.style.display = 'none'
+        })
+
+
+        if (formPlaces.from.value === 'Київ') {
+
+            if (formPlaces.to.value === 'Львів') {
+                document.querySelector('.table.kyiv-lviv').style.display = 'table';
+
+                const dateDeps = document.querySelector('.table.kyiv-lviv').querySelectorAll('.table__dep-date')
+                const dateArrs = document.querySelector('.table.kyiv-lviv').querySelectorAll('.table__arr-date')
+
+                dateDeps.forEach(span => {
+                    span.textContent = day + '.' + month + '.' + year;
+                    if (submitString !== undefined) {
+                        span.textContent = submitDay + '.' + submitMonth + '.' + submitYear
+                    }
+                })
+                dateArrs.forEach(span => {
+                    let spanParent = span.closest('tr')
+                    let times = spanParent.querySelector('.table__time').querySelectorAll('span')
+                    let depDate = spanParent.querySelector('.table__dep-date').textContent
+
+
+                    if (Number(times[1].textContent[0] + times[1].textContent[1]) - Number(times[0].textContent[0] + times[0].textContent[1]) < 0) {
+                        if (depDate[1] === '9') {
+                            span.textContent = (Number(depDate[0]) + 1) + '0' + '.' + depDate[3] + depDate[4] + depDate[5] + depDate[6] + depDate[7] + depDate[8] + depDate[9]
+                        }
+
+                        else {
+                            span.textContent = depDate[0] + (Number(depDate[1]) + 1) + '.' + depDate[3] + depDate[4] + depDate[5] + depDate[6] + depDate[7] + depDate[8] + depDate[9]
+                        }
+
+                        switch (depDate[3] + depDate[4]) {
+                            case '04':
+                            case '06':
+                            case '11':
+                                if (span.textContent[0] + span.textContent[1] === '31') {
+                                    span.textContent = '0' + '1' + '.' + depDate[3] + (Number(depDate[4]) + 1) + '.' + depDate[6] + depDate[7] + depDate[8] + depDate[9]
+                                }
+                                break;
+                            case '09':
+                                if (span.textContent[0] + span.textContent[1] === '31') {
+                                    span.textContent = '0' + '1' + '.' + '1' + '0' + '.' + depDate[6] + depDate[7] + depDate[8] + depDate[9]
+                                }
+                                break;
+                            case '02':
+                                if (span.textContent[0] + span.textContent[1] === '29') {
+                                    span.textContent = '0' + '1' + '.' + depDate[3] + (Number(depDate[4]) + 1) + '.' + depDate[6] + depDate[7] + depDate[8] + depDate[9]
+                                }
+                                break;
+                            default:
+                                if (span.textContent[0] + span.textContent[1] === '32') {
+                                    span.textContent = '0' + '1' + '.' + depDate[3] + (Number(depDate[4]) + 1) + '.' + depDate[6] + depDate[7] + depDate[8] + depDate[9]
+                                    if (span.textContent[3] + span.textContent[4] === '13') {
+                                        span.textContent = '0' + '1' + '.' + '0' + '1' + '.' + (Number(depDate[6] + depDate[7] + depDate[8] + depDate[9]) + 1)
+                                    }
+                                }
+                                break;
+                        }
+                    }
+
+                    else {
+                        span.textContent = depDate
+                    }
+                })
+
+
+                let tableFreeArray = document.querySelector('.table.kyiv-lviv').querySelectorAll('.table__free')
+
+                tableFreeArray.forEach(td => {
+                    td.onmouseover = () => {
+                        let closestSpan = td.querySelector('.free__type');
+
+                        closestSpan.style.position = 'absolute';
+                        closestSpan.style.backgroundColor = '#eaeef1';
+
+                        switch (closestSpan.textContent) {
+                            case 'C1':
+                                closestSpan.textContent = 'Сидячий першого класу';
+                                closestSpan.style.marginLeft = '-270px';
+                                break;
+                            case 'C2':
+                                closestSpan.textContent = 'Сидячий другого класу';
+                                closestSpan.style.marginLeft = '-260px';
+                                break;
+                            case 'К':
+                                closestSpan.textContent = 'Купе';
+                                closestSpan.style.marginLeft = '-60px';
+                                break;
+                            case 'П':
+                                closestSpan.textContent = 'Плацкарт';
+                                closestSpan.style.marginLeft = '-115px';
+                                break;
+                            case 'Л':
+                                closestSpan.textContent = 'Люкс';
+                                closestSpan.style.marginLeft = '-65px';
+                                break;
+                        }
+                    }
+
+                    td.onmouseout = () => {
+                        let closestSpan = td.querySelector('.free__type');
+
+                        closestSpan.style.position = '';
+                        closestSpan.style.marginLeft = '';
+                        closestSpan.style.backgroundColor = '';
+
+                        switch (closestSpan.textContent) {
+                            case 'Сидячий першого класу':
+                                closestSpan.textContent = 'C1';
+                                break;
+                            case 'Сидячий другого класу':
+                                closestSpan.textContent = 'C2';
+                                break;
+                            case 'Купе':
+                                closestSpan.textContent = 'К';
+                                break;
+                            case 'Плацкарт':
+                                closestSpan.textContent = 'П';
+                                break;
+                            case 'Люкс':
+                                closestSpan.textContent = 'Л';
+                                break;
+                        }
+                    }
+                });
+            }
+
+        }
+    }
 }
 
 
 
-setInterval(function () {
-    var submitString = form.date.value.toString();
-    var submitDay = submitString[8] + submitString[9];
-    var submitMonth = submitString[5] + submitString[6];
-    var submitYear = submitString[0] + submitString[1] + submitString[2] + submitString[3];
-    document.getElementById('submit').innerText = 'Пошук поїздів на ' + submitDay + '.' + submitMonth + '.' + submitYear;
-}, 100)
+
+
+
 
 
