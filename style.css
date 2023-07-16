@@ -102,23 +102,6 @@ input{
     font-size: 16px;
 }
 
-.downside__time{
-    display: flex;
-    align-items: center;
-    margin-left: 70px;
-}
-
-.time__text{
-    color: #333;
-    font-size: 15px;
-    font-weight: 500;
-}
-
-.time__select{
-    margin-left: 10px;
-    padding: 7px 8px;
-    background-color: #DFE3E5;
-}
 
 
 

@@ -58,7 +58,7 @@
         </div>
         <div class="main">
             <div class="container">
-                <form action="#" class="main__form" method="post" name="form">
+                <form action="#" class="main__form" method="post" name="formPlaces">
                     <div class="form__content">
                         <div class="content__upside">
                             <div class="upside__column-first">
@@ -116,35 +116,6 @@
                                             type="button">Післязавтра</button>
                                     </li>
                                 </ul>
-                            </div>
-                            <div class="downside__time">
-                                <p class="time__text">Час відправлення від</p>
-                                <select name="time" class="time__select">
-                                    <option value="00">00:00</option>
-                                    <option value="01">01:00</option>
-                                    <option value="02">02:00</option>
-                                    <option value="03">03:00</option>
-                                    <option value="04">04:00</option>
-                                    <option value="05">05:00</option>
-                                    <option value="06">06:00</option>
-                                    <option value="07">07:00</option>
-                                    <option value="08">08:00</option>
-                                    <option value="09">09:00</option>
-                                    <option value="10">10:00</option>
-                                    <option value="11">11:00</option>
-                                    <option value="12">12:00</option>
-                                    <option value="13">13:00</option>
-                                    <option value="14">14:00</option>
-                                    <option value="15">15:00</option>
-                                    <option value="16">16:00</option>
-                                    <option value="17">17:00</option>
-                                    <option value="18">18:00</option>
-                                    <option value="19">19:00</option>
-                                    <option value="20">20:00</option>
-                                    <option value="21">21:00</option>
-                                    <option value="22">22:00</option>
-                                    <option value="23">23:00</option>
-                                </select>
                             </div>
                         </div>
                     </div>
@@ -208,41 +179,6 @@
                 <tr>
                     <td class="table__free">
                         <span class="free__type">C2</span>
-                        <span class="free__seats">58</span>
-                        <button class="free__button">Вибрати</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="table__number">
-                        <span>749 К</span>
-                    </td>
-                    <td class="table__location">
-                        <span>Київ-Пасажирський</span>
-                        <span>Ужгород</span>
-                    </td>
-                    <td class="table__date">
-                        <div>
-                            <span>Відправлення</span>
-                            <span class="table__dep-date">
-                                <!-- вставити дату через js -->
-                            </span>
-                        </div>
-                        <div>
-                            <span>Прибуття</span>
-                            <span class="table__arr-date">
-                                <!-- вставити дату через js -->
-                            </span>
-                        </div>
-                    </td>
-                    <td class="table__time">
-                        <span>13:25</span>
-                        <span>19:54</span>
-                    </td>
-                    <td class="table__duration">
-                        <span>8:02</span>
-                    </td>
-                    <td class="table__free">
-                        <span class="free__type">C1</span>
                         <span class="free__seats">58</span>
                         <button class="free__button">Вибрати</button>
                     </td>
@@ -444,6 +380,14 @@
                     </td>
                 </tr>
             </table>
+        </div>
+
+        <div class="seats">
+            <form action="#" method="post" name="formSeats" class="seats__form">
+                <select class="seats__select"></select>
+                <button class="seats__button">Оформити квиток</button>
+            </form>
+            
         </div>
     </div>
 
