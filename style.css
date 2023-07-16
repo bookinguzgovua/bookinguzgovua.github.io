@@ -2,6 +2,7 @@
 
 body{
     font: 14px Roboto;
+    background-color: #eaeef1;
 }
 
 .text{
@@ -48,8 +49,9 @@ input{
 
 
 .main{
-    background-color: #EAEEF1;
+    background: #eaeef1;
     padding: 20px 25px;
+    box-shadow: 0 1px 2.4rem 0 #c3c9d0;
 }
 
 
@@ -120,19 +122,16 @@ input{
 
 
 
+
+
 .submit{
-    width: 470px;
-    height: 70px;
-    background-color: #dbe4ea;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    border-radius: 50px;
-    margin: 0 auto;
     margin-top: 30px;
 }
 
-.submit-button{
+.submit__button{
     display: block;
     width: 440px;
     height: 50px;
@@ -143,4 +142,101 @@ input{
     border: 2px solid #a5d1ef;
     border-radius: 50px;
     padding: 5px;
+}
+
+.submit__alert{
+    margin-top: 20px;
+    color: tomato;
+    font-size: 24px;
+    font-weight: 600;
+    display: none;
+}
+
+
+
+
+
+.table-container{
+    margin-top: 30px;
+}
+
+.table{
+    width: 1000px;
+    border-collapse: collapse;
+}
+
+.table th{
+    background-color: #e6e9ed;
+    border: 1px solid #d7dce1;
+    padding: 5px 10px;
+    color: #777a7e;
+}
+
+.span-block{
+    display: block;
+}
+
+.table td{
+    border: 1px solid #d7dce1;
+    padding: 10px;
+    font-weight: 700;
+    text-align: center;
+    background: #f2f4f7;
+}
+
+.table__number{
+    font-size: 22px;
+}
+
+.table__location span{
+    display: block;
+    margin-bottom: 5px;
+    font-size: 15px;
+}
+
+.table__date div{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+    font-size: 12px;
+    font-weight: 500;
+    border-bottom: 1px solid #c5c7cc;
+}
+
+.table__time span{
+    display: block;
+    margin-bottom: 5px;
+    font-size: 21px;
+}
+
+.table__duration{
+    font-size: 21px;
+}
+
+
+.free__type{
+    font-weight: 500;
+    font-size: 23px;
+    color: #9a9a9a;
+    font-style: italic;
+    margin-right: 10px;
+}
+
+.free__seats{
+    font-size: 21px;
+}
+
+.free__button{
+    background: linear-gradient(0deg, #79b6db, #b3dbf2);
+    padding: 5px;
+    color: #1d4965;
+    font-weight: 500;
+    font-size: 15px;
+    margin-left: 10px;
+}
+
+
+
+.table.kyiv-lviv{
+    display: none;
 }
