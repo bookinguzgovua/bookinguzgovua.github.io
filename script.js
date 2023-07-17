@@ -291,20 +291,35 @@ buttonSubmit.onclick = () => {
                     }
                 });
 
-                const chooseButtons = document.querySelector('.table.kyiv-lviv').querySelectorAll('.free__button')
 
-                chooseButtons.forEach(button => {
-                    const buttonTr = button.closest('tr')
-                    const freeSeatCount = Number(buttonTr.querySelector('.free__seats').textContent)
-                    const seatType = buttonTr.querySelector('.free__type').textContent
+                let trainNumber, wagonNumber, seatNumber, cost
 
-                    button.onclick = () => {
+                document.querySelector('.table.kyiv-lviv').addEventListener('click', (event) => {
+                    if (event.target.classList.contains('free__button')) {
+
+
+                        let button = event.target
+
+                        const buttonTr = button.closest('tr')
+                        const freeSeatCount = Number(buttonTr.querySelector('.free__seats').textContent)
+                        const seatType = buttonTr.querySelector('.free__type').textContent
+                        console.log(buttonTr)
+                        console.log(freeSeatCount)
+                        console.log(seatType)
+
+                        let tdTrainNumber = buttonTr.querySelector('.table__number')
+                        if (tdTrainNumber === null) {
+                            tdTrainNumber = buttonTr.previousElementSibling.querySelector('.table__number')
+                        }
+                        trainNumber = tdTrainNumber.querySelector('span').textContent
+
                         document.querySelector('.seats').style.display = 'block'
+                        document.querySelector('.table.kyiv-lviv').style.display = 'none'
 
                         let wagonCount, seatsPerWagon, seats, selectedWagon
 
                         switch (seatType) {
-                            case 'C1':
+                            case 'Сидячий першого класу':
                                 clearSelectWagon()
                                 wagonCount = 3;
                                 seatsPerWagon = Math.floor(freeSeatCount / wagonCount)
@@ -341,8 +356,11 @@ buttonSubmit.onclick = () => {
                                     const selectedWagon = parseInt(this.value);
                                     updateSeatOptions(selectedWagon);
                                 });
+
+                                cost = '218, 34';
+
                                 break;
-                            case 'C2':
+                            case 'Сидячий другого класу':
                                 clearSelectWagon()
                                 wagonCount = 2;
                                 seatsPerWagon = Math.floor(freeSeatCount / wagonCount)
@@ -379,8 +397,11 @@ buttonSubmit.onclick = () => {
                                     const selectedWagon = parseInt(this.value);
                                     updateSeatOptions(selectedWagon);
                                 });
+
+                                cost = '451, 33'
+
                                 break;
-                            case 'П':
+                            case 'Плацкарт':
                                 clearSelectWagon()
                                 wagonCount = 4;
                                 seatsPerWagon = Math.floor(freeSeatCount / wagonCount)
@@ -417,8 +438,11 @@ buttonSubmit.onclick = () => {
                                     const selectedWagon = parseInt(this.value);
                                     updateSeatOptions(selectedWagon);
                                 });
+
+                                cost = '210, 85'
+
                                 break;
-                            case 'К':
+                            case 'Купе':
                                 clearSelectWagon()
                                 wagonCount = 5;
                                 seatsPerWagon = Math.floor(freeSeatCount / wagonCount)
@@ -455,8 +479,11 @@ buttonSubmit.onclick = () => {
                                     const selectedWagon = parseInt(this.value);
                                     updateSeatOptions(selectedWagon);
                                 });
+
+                                cost = '541, 57'
+
                                 break;
-                            case 'Л':
+                            case 'Люкс':
                                 clearSelectWagon()
                                 wagonCount = 2;
                                 seatsPerWagon = Math.floor(freeSeatCount / wagonCount)
@@ -493,15 +520,51 @@ buttonSubmit.onclick = () => {
                                     const selectedWagon = parseInt(this.value);
                                     updateSeatOptions(selectedWagon);
                                 });
+
+                                cost = '1687, 98'
+
                                 break;
                         }
                     }
-                });
-            }
+                })
 
+                document.querySelector('.seats__button').onclick = (event) => {
+                    event.preventDefault();
+
+                    wagonNumber = selectWagon.value;
+                    seatNumber = selectSeat.value;
+
+                    document.querySelector('.buy').style.display = 'block'
+
+                    document.querySelector('.train-info__train').textContent = 'Поїзд: ' + trainNumber
+                    document.querySelector('.train-info__wagon').textContent = 'Вагон: ' + wagonNumber
+                    document.querySelector('.train-info__seat').textContent = 'Місце: ' + seatNumber
+
+                    document.querySelector('.js-cost-span').textContent = cost + ' грн'
+                }
+
+                document.querySelector('.form__cancel').onclick = () => {
+                    document.querySelector('.buy').style.display = 'none';
+                }
+
+                document.querySelector('.end__button').onclick = () => {
+                    let isInputEmpty = false
+                    document.querySelectorAll('.name__input').forEach(input => {
+                        if (input.value === '') isInputEmpty = true
+                        document.querySelector('.end__message').textContent = "Уведіть прізвище та ім'я"
+                        document.querySelector('.end__message').style.display = 'block'
+                    })
+
+                    if (isInputEmpty === false) {
+                        document.querySelector('.end__message').textContent = 'Квиток додано до кошика'
+                        document.querySelector('.end__message').style.display = 'block'
+                    }
+                }
+            }
         }
     }
 }
+
 
 
 

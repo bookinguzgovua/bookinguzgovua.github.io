@@ -384,10 +384,64 @@
 
         <div class="seats">
             <form action="#" method="post" name="formSeats" class="seats__form">
-                    <label>Вагон:</label><select class="seats__wagon"></select>
-                    <label>Місце:</label><select class="seats__seat"></select>
+                <label>Вагон:</label><select class="seats__wagon"></select>
+                <label>Місце:</label><select class="seats__seat"></select>
                 <button class="seats__button">Оформити квиток</button>
             </form>
+        </div>
+
+        <div class="buy">
+            <div class="buy__alert">
+                <h3 class="alert__head">Введіть дані пасажирів</h3>
+                <p class="alert__text">Обов'язково введіть прізвище та ім'я пасажира, який буде здійснювати поїздку</p>
+                <p class="alert__text">Зміна прізвища та імені після здійснення оплати проїзних документів НЕМОЖЛИВА</p>
+            </div>
+
+            <div class="buy__passenger">Пасажир 1 </div>
+            
+            <form action="#" method="post" name="formBuy" class="buy__form">
+                <div class="buy-form__top">
+                    <div class="form__name">
+                        <div class="name__title">Прізвище</div>
+                        <input type="text" class="name__input">
+                    </div>
+                    <div class="form__name">
+                        <div class="name__title">Ім'я</div>
+                        <input type="text" class="name__input">
+                    </div>
+                    <div class="form__cancel">Відмінити</div>
+                </div>
+                <div class="buy-form__bottom">
+                    <h4 class="form__train-info">
+                        <span class="train-info__train">Поїзд</span>
+                        <span class="train-info__wagon">Вагон</span>
+                        <span class="train-info__seat">Місце</span>
+                    </h4>
+                    <div class="buy-form__services">
+                        <div class="services__ticket">
+                            <h5 class="services__head">Тип документу</h5>
+                            <div><input type="radio" name="ticket" id="ticketFull" checked><label for="ticketFull">Повний</label></div>
+                            <div><input type="radio" name="ticket" id="ticketKid"><label for="ticketKid">Дитячий</label></div>
+                            <div><input type="radio" name="ticket" id="ticketзPrivel"><label for="ticketзPrivel">Пільговий</label></div>
+                        </div>
+                        <div class="services__drink">
+                            <h5 class="services__head">Послуги</h5>
+                            <div><input type="checkbox" id="battleTea"><label for="battleTea">Бойовий чай</label></div>
+                            <div><input type="checkbox" id="OneDrink"><label for="OneDrink">1 напій</label></div>
+                            <div><input type="checkbox" id="AuthorTea"><label for="AuthorTea">Авторський чай</label></div>
+                            <div><input type="checkbox" id="DripCoffee"><label for="DripCoffee">Дріп-кава</label></div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <div class="buy__end">
+                <div class="end__cost">
+                    <span>Загальна вартість: </span>
+                    <span class="js-cost-span"></span>
+                </div>
+                <button class="end__button">Купити</button>
+                <h2 class="end__message"></h2>
+            </div>
 
         </div>
     </div>
