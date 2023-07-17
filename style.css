@@ -1,21 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
 
-body{
+body {
     font: 14px Roboto;
     background-color: #eaeef1;
 }
 
-.text{
+.text {
     font-weight: 500;
     color: #777A7E;
 }
 
-.wrapper{
+.wrapper {
     width: 1000px;
     margin: 0 auto;
 }
 
-input{
+input {
     background-color: #DFE3E5;
     border-radius: 3px;
 }
@@ -24,43 +24,43 @@ input{
 
 
 
-.popular{
+.popular {
     background-color: #D7DBDF;
     padding: 45px 0 15px 25px;
 }
 
-.popular__list{
+.popular__list {
     display: flex;
     font-weight: 700;
     gap: 10px;
     margin-top: 10px;
 }
 
-.popular__list-item button{
+.popular__list-item button {
     font-size: 14px;
     padding: 10px 13px;
 }
 
-.popular__list-item button:hover{
+.popular__list-item button:hover {
     background: linear-gradient(0deg, rgba(231, 231, 231, 1) 0%, rgba(205, 205, 205, 1) 100%);
 }
 
 
 
 
-.main{
+.main {
     background: #eaeef1;
     padding: 20px 25px;
     box-shadow: 0 1px 2.4rem 0 #c3c9d0;
 }
 
 
-.content__upside{
+.content__upside {
     display: grid;
     grid-template-columns: 2fr 1fr 2fr;
 }
 
-.upside__input{
+.upside__input {
     border: 1px solid #B8BFC7;
     width: 440px;
     height: 45px;
@@ -69,31 +69,31 @@ input{
     font-size: 16px;
 }
 
-.upside__button{
+.upside__button {
     display: block;
     margin: 0 auto;
     background: none;
     margin-top: 25px;
 }
 
-.hint-list{
+.hint-list {
     display: flex;
     gap: 10px;
     margin-top: 5px;
 }
 
-.hint-list__button{
+.hint-list__button {
     background: none;
     text-decoration: underline;
 }
 
 
-.content__downside{
+.content__downside {
     margin-top: 30px;
     display: flex;
 }
 
-.downside__input{
+.downside__input {
     width: 230px;
     height: 45px;
     margin-top: 5px;
@@ -107,14 +107,14 @@ input{
 
 
 
-.submit{
+.submit {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-top: 30px;
 }
 
-.submit__button{
+.submit__button {
     display: block;
     width: 440px;
     height: 50px;
@@ -127,7 +127,7 @@ input{
     padding: 5px;
 }
 
-.submit__alert{
+.submit__alert {
     margin-top: 20px;
     color: tomato;
     font-size: 24px;
@@ -139,27 +139,28 @@ input{
 
 
 
-.table-container{
+.table-container {
     margin-top: 30px;
+    padding-bottom: 50px;
 }
 
-.table{
+.table {
     width: 1000px;
     border-collapse: collapse;
 }
 
-.table th{
+.table th {
     background-color: #e6e9ed;
     border: 1px solid #d7dce1;
     padding: 5px 10px;
     color: #777a7e;
 }
 
-.span-block{
+.span-block {
     display: block;
 }
 
-.table td{
+.table td {
     border: 1px solid #d7dce1;
     padding: 10px;
     font-weight: 700;
@@ -167,17 +168,17 @@ input{
     background: #f2f4f7;
 }
 
-.table__number{
+.table__number {
     font-size: 22px;
 }
 
-.table__location span{
+.table__location span {
     display: block;
     margin-bottom: 5px;
     font-size: 15px;
 }
 
-.table__date div{
+.table__date div {
     display: flex;
     justify-content: space-between;
     margin-bottom: 5px;
@@ -186,18 +187,18 @@ input{
     border-bottom: 1px solid #c5c7cc;
 }
 
-.table__time span{
+.table__time span {
     display: block;
     margin-bottom: 5px;
     font-size: 21px;
 }
 
-.table__duration{
+.table__duration {
     font-size: 21px;
 }
 
 
-.free__type{
+.free__type {
     font-weight: 500;
     font-size: 23px;
     color: #9a9a9a;
@@ -205,11 +206,11 @@ input{
     margin-right: 10px;
 }
 
-.free__seats{
+.free__seats {
     font-size: 21px;
 }
 
-.free__button{
+.free__button {
     background: linear-gradient(0deg, #79b6db, #b3dbf2);
     padding: 5px;
     color: #1d4965;
@@ -220,6 +221,48 @@ input{
 
 
 
-.table.kyiv-lviv{
+.table.kyiv-lviv {
     display: none;
+}
+
+
+
+.seats{
+    display: none;
+    padding-bottom: 50px;
+}
+
+.seats__form{
+    text-align: center;
+}
+
+.seats__form label{
+    font-size: 20px;
+    padding-right: 10px;
+    padding-left: 20px;
+}
+
+.seats__wagon,
+.seats__seat {
+    font-size: 20px;
+    padding: 5px 10px;
+    background: linear-gradient(180deg, #add7ef 0, #78b5da 100%);
+    color: #1d4965;
+}
+
+.seats__wagon option,
+.seats__seat option {
+    background-color: #add7ef;
+    color: #1d4965;
+}
+
+.seats__button {
+    display: block;
+    color: #1d4965;
+    font-weight: 500;
+    background: linear-gradient(0deg, #79b6db, #b3dbf2);
+    font-size: 20px;
+    padding: 20px;
+    margin: 0 auto;
+    margin-top: 20px;
 }
