@@ -11,7 +11,7 @@ body {
 }
 
 .wrapper {
-    width: 1000px;
+    max-width: 1000px;
     margin: 0 auto;
 }
 
@@ -227,16 +227,16 @@ input {
 
 
 
-.seats{
+.seats {
     display: none;
     padding-bottom: 50px;
 }
 
-.seats__form{
+.seats__form {
     text-align: center;
 }
 
-.seats__form label{
+.seats__form label {
     font-size: 20px;
     padding-right: 10px;
     padding-left: 20px;
@@ -265,4 +265,155 @@ input {
     padding: 20px;
     margin: 0 auto;
     margin-top: 20px;
+}
+
+
+
+
+.buy{
+    display: none;
+}
+
+.buy__alert {
+    padding-bottom: 10px;
+}
+
+.alert__head {
+    font-size: 21px;
+    color: #444;
+    font-weight: 700;
+}
+
+.alert__text {
+    font-weight: 500;
+    color: #d56950;
+}
+
+.alert__text:nth-child(2) {
+    margin-top: 5px;
+}
+
+.buy__passenger {
+    background-color: #A1B0B9;
+    color: #FFFFFF;
+    padding: 15px 20px;
+    font-weight: 700;
+    font-size: 16px;
+}
+
+.buy__form {
+    background: #f9fbfd;
+    border-style: solid;
+    border-color: #d7dce1;
+    border-width: 0 1px 1px 1px;
+    padding: 20px;
+}
+
+.buy-form__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.form__cancel {
+    text-align: right;
+    text-decoration: underline;
+    color: #1d4965;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.name__input {
+    margin-top: 5px;
+    padding: 7px 10px;
+    background-color: #eaeff1;
+    width: 250px;
+    border: 1px solid #ced3d8;
+}
+
+
+.buy-form__bottom {
+    margin-top: 20px;
+}
+
+.form__train-info {
+    font-weight: 700;
+}
+
+.form__train-info span{
+    margin-left: 20px;
+}
+
+.form__train-info span:nth-child(1){
+    margin-left: 0px;
+}
+
+.buy-form__services {
+    margin-top: 10px;
+    border: 1px solid #d7dce1;
+    display: flex;
+    padding: 20px;
+}
+
+.services__ticket {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.services__head {
+    color: #8a8d91;
+}
+
+.services__ticket input {
+    margin-right: 5px;
+}
+
+.services__drink {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-left: 100px;
+}
+
+.services__drink input {
+    margin-right: 5px;
+}
+
+.buy__end {
+    padding-top: 30px;
+    padding-bottom: 50px;
+}
+
+.end__cost{
+    text-align: center;
+}
+
+.end__cost span:nth-child(1) {
+    color: #aaa;
+    font-weight: 500;
+}
+
+.end__cost span:nth-child(2) {
+    color: #000;
+    font-size: 21px;
+    font-weight: 700;
+}
+
+.end__button{
+    margin: 0 auto;
+    margin-top: 10px;
+    display: block;
+    color: #1d4965;
+    font-weight: 500;
+    background: linear-gradient(0deg, #79b6db, #b3dbf2);
+    font-size: 20px;
+    padding: 10px 20px;
+}
+
+.end__message{
+    font-size: 24px;
+    text-align: center;
+    margin-top: 20px;
+    display: none;
 }
