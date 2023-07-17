@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Замовлення квитка</title>
+    <link rel="stylesheet" href="buyTiket.css">
+</head>
+<body>
+        <div class="container">
+            <table class="infoLine">
+                <tbody>
+                    <tr class="firstLine">
+                        <th><div class="fistLineI">№ поїзда</div></th>
+                        <th><div class="fistLineI">Звідки / Куди</div></th>
+                        <th> <div class="fistLineI">Дата</div></th>
+                        <th> <div class="fistLineI"><div>Відправлення</div><div>Прибуття</div></div></th>
+                        <th> <div class="fistLineI">Тривалість</div></th>
+                    </tr>
+                    <tr class="secondLine">
+                        <td> <div class="secondLineI">715 K</div></td>
+                        <td> <div class="secondLineI">
+                                <div style="font-size: 20px;">Київ-Пасажирський</div>
+                                <div style="font-size: 20px;">Львів</div>
+                            </div>
+                        </td>
+                        <td > <div class="secondLineI">
+                            <div class="data">
+                                <span>Відправлення</span>
+                                <span>субота, 22.07.2023</span>
+                            </div>
+                            <div class="data">
+                                <span>Прибуття</span>
+                                <span>субота, 22.07.2023</span>
+                            </div>
+                        </div></td>
+                        <td class="time"><div class="secondLineI">
+                            <div>11:01</div>
+                            <div>19:04</div>
+                        </div></td>
+                        <td><div class="secondLineI"><div class="duration">8:02</div></div></td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="afterTable" style="font-size: 25px;">Введіть дані пасажирів</div>
+            <div class="afterTablebesc"style="font-size: 14px;" >Обов'язково введіть прізвище та ім'я пасажира, який буде здійснювати поїздку <br>Зміна прізвища та імені після здійснення оплати проїзних документів НЕМОЖЛИВА
+            </div>
+            <div class="passenger">Пасажир 1 </div>
+          <div class="formbuy">
+            <input type="text" placeholder="Прізвище" class="enterName">
+            <input type="text" placeholder="Ім'я" class="enterName">
+            <button type="submit">Відмінити</button>
+          </div>
+          <div class="traininfo">
+            <span style=" margin: 0px 0px 0px 20px;">Поїзд 191 К</span>
+            <span style=" margin: 0px 0px 0px 20px;">Вагон 9</span>
+            <span style=" margin: 0px 0px 0px 20px;">Мiсце 13</span>
+        </div>
+        <form class="place-info">
+
+        </form>
+            <div class="BonusBuy">
+                <div class="KindBonus">Купить</div>
+                <div class="KindBonus">Тип документу
+                    <div class="morebonus">Повний</div>
+                    <div class="morebonus">Дитячий</div>
+                    <div class="morebonus">Пільговий</div>
+                </div>
+                <div class="KindBonus">Послуги
+                    <div class="morebonus">Постільна білизна</div>
+                    <div class="morebonus">Бойовий чай</div>
+                    <div class="morebonus">1 напій</div>
+                    <div class="morebonus">Авторський чай</div>
+                    <div class="morebonus">Дріп-кава</div>
+                </div>
+                <div >1462,49 грн</div>
+            </div>
+            <TotalSum class="TotalSum">
+                <div class="Sum">
+                    <div>Загальна вартисть</div>
+                    <div> 1462,49 грн</div>
+                </div>
+            </TotalSum>
+            
+
+        </div>
+</body>
+</html>

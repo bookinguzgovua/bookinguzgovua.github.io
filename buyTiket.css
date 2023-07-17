@@ -1,0 +1,151 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+body{
+    font: 14px Roboto;
+    
+    
+}
+table {
+    display: table;
+    border-collapse: separate;
+    box-sizing: border-box;
+    text-indent: initial;
+    border-spacing: 2px;
+    border-color: gray;
+}
+
+
+
+.text{
+    font-weight: 500;
+    color: #777A7E;
+}
+
+.container{
+    width: 1000px;
+    margin: 0 auto;
+}
+
+.firstLine{
+    margin-bottom: 10px;
+    background-color: #E6E9ED; 
+}
+.fistLineI{
+    height: 30px;
+    border: 1px solid #d7dce1;
+    text-align: left;
+
+}
+
+.train-list .train-table tr th{
+    background: #e6e9ed;
+    color: #777a7e;
+    font-weight: 700;
+    text-align: left;
+    height: 5rem;
+    line-height: 1.9rem;
+    padding: 0 1rem;
+    white-space: nowrap;
+}
+.secondLineI{
+    width: 100%;
+    font-size: 22px;
+    
+
+}
+.infoLine{
+    width: 100%;
+}
+.data{
+
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #c5c7cc;
+    font-size: 12px;
+    font-weight: 500;
+}
+.time{  
+    width: 1%;
+    padding : 10px;
+    font-size: 2.1rem;
+    font-weight: 700;
+    text-align: center;
+}
+.duration{
+    text-align: center;
+    font-weight: 700;
+}
+tbody{
+    background: #f9fbfd;
+}
+.afterTable{
+    margin: 35px 0px 0px ;
+    color : #D56950;
+}
+.afterTablebesc{
+    color : #D56950;
+}
+.passenger{
+    background-color: #A1B0B9;
+    color: #FFFFFF;
+    padding: 20px 0px;
+}
+
+
+.lastname{
+    width: 100px;
+}
+
+.enterLine{
+    display: flex;
+    justify-content: space-between;
+}
+.formbuy{
+   padding: 20px;
+   display: flex;
+   justify-content: space-around;
+   background: #f9fbfd;
+}
+.enterName{
+    height: 20px;
+    padding: 0px 10px;
+    border: 0.1rem solid #ced3d8;
+    background: #eaeff1;
+}
+.traininfo{
+    line-height: 2.6rem;
+    font-weight: 700;
+    font-size: 15px;
+    color: #222;
+    background-color: #eaeff1;
+}
+.place-info{
+    display: flex;
+    justify-content: flex-start;
+}
+.BonusBuy{
+    display: flex;
+    justify-content: space-between;
+    border: 0.5px solid #d7dce1;
+    /* border-style: solid;
+    border-color: #d7dce1; */
+    background-color: #F9FBFB;
+}
+.morebonus{
+    margin: 10px 20px;
+    color: #222222;
+    
+}
+::before{
+    background-image: url(ic-radio.svg);
+}
+.KindBonus{
+    width: 100%;
+    border: 1px solid #d7dce1;
+    font-size: 14px;
+}
