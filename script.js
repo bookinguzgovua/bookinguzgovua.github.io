@@ -1,6 +1,15 @@
 const selectWagon = document.querySelector('.seats__wagon')
 const selectSeat = document.querySelector('.seats__seat')
 
+const buttonSwap = document.getElementById('button-swap');
+
+const inputDate = document.querySelector('.downside__input')
+const buttonSubmit = document.getElementById('submit')
+const alertSubmit = document.querySelector('.submit__alert')
+
+const allTables = document.querySelectorAll('.table')
+
+let trainNumber, wagonNumber, seatNumber, cost
 
 function clearSelectSeat() {
     while (selectSeat.firstChild) {
@@ -41,15 +50,11 @@ document.getElementById('popular5').onclick = function () {
 
 
 
-const buttonSwap = document.getElementById('button-swap');
-
 buttonSwap.onclick = function () {
     let a = formPlaces.from.value;
     formPlaces.from.value = formPlaces.to.value;
     formPlaces.to.value = a;
 }
-
-
 
 
 
@@ -117,10 +122,6 @@ document.getElementById('hint-day3').onclick = function () {
 }
 
 
-const inputDate = document.querySelector('.downside__input')
-const buttonSubmit = document.getElementById('submit')
-const alertSubmit = document.querySelector('.submit__alert')
-
 
 buttonSubmit.textContent = 'Пошук поїздів на ' + day + '.' + month + '.' + year;
 
@@ -138,7 +139,7 @@ inputDate.addEventListener('change', () => {
     }
 })
 
-const allTables = document.querySelectorAll('.table')
+
 
 buttonSubmit.onclick = () => {
     if ((submitYear < year) || (submitMonth < month && submitYear <= year) || (submitDay < day && submitMonth <= month)) {
@@ -247,7 +248,7 @@ buttonSubmit.onclick = () => {
                                 break;
                             case 'C2':
                                 closestSpan.textContent = 'Сидячий другого класу';
-                                closestSpan.style.marginLeft = '-260px';
+                                closestSpan.style.marginLeft = '-261px';
                                 break;
                             case 'К':
                                 closestSpan.textContent = 'Купе';
@@ -292,20 +293,14 @@ buttonSubmit.onclick = () => {
                 });
 
 
-                let trainNumber, wagonNumber, seatNumber, cost
 
                 document.querySelector('.table.kyiv-lviv').addEventListener('click', (event) => {
                     if (event.target.classList.contains('free__button')) {
-
-
                         let button = event.target
 
                         const buttonTr = button.closest('tr')
                         const freeSeatCount = Number(buttonTr.querySelector('.free__seats').textContent)
                         const seatType = buttonTr.querySelector('.free__type').textContent
-                        console.log(buttonTr)
-                        console.log(freeSeatCount)
-                        console.log(seatType)
 
                         let tdTrainNumber = buttonTr.querySelector('.table__number')
                         if (tdTrainNumber === null) {
@@ -362,7 +357,7 @@ buttonSubmit.onclick = () => {
                                 break;
                             case 'Сидячий другого класу':
                                 clearSelectWagon()
-                                wagonCount = 2;
+                                wagonCount = 3;
                                 seatsPerWagon = Math.floor(freeSeatCount / wagonCount)
                                 for (let i = 1; i <= wagonCount; i++) {
                                     let option = document.createElement('option')
@@ -528,39 +523,40 @@ buttonSubmit.onclick = () => {
                     }
                 })
 
-                document.querySelector('.seats__button').onclick = (event) => {
-                    event.preventDefault();
 
-                    wagonNumber = selectWagon.value;
-                    seatNumber = selectSeat.value;
-
-                    document.querySelector('.buy').style.display = 'block'
-
-                    document.querySelector('.train-info__train').textContent = 'Поїзд: ' + trainNumber
-                    document.querySelector('.train-info__wagon').textContent = 'Вагон: ' + wagonNumber
-                    document.querySelector('.train-info__seat').textContent = 'Місце: ' + seatNumber
-
-                    document.querySelector('.js-cost-span').textContent = cost + ' грн'
-                }
-
-                document.querySelector('.form__cancel').onclick = () => {
-                    document.querySelector('.buy').style.display = 'none';
-                }
-
-                document.querySelector('.end__button').onclick = () => {
-                    let isInputEmpty = false
-                    document.querySelectorAll('.name__input').forEach(input => {
-                        if (input.value === '') isInputEmpty = true
-                        document.querySelector('.end__message').textContent = "Уведіть прізвище та ім'я"
-                        document.querySelector('.end__message').style.display = 'block'
-                    })
-
-                    if (isInputEmpty === false) {
-                        document.querySelector('.end__message').textContent = 'Квиток додано до кошика'
-                        document.querySelector('.end__message').style.display = 'block'
-                    }
-                }
             }
+        }
+    }
+    document.querySelector('.seats__button').onclick = (event) => {
+        event.preventDefault();
+
+        wagonNumber = selectWagon.value;
+        seatNumber = selectSeat.value;
+
+        document.querySelector('.buy').style.display = 'block'
+
+        document.querySelector('.train-info__train').textContent = 'Поїзд: ' + trainNumber
+        document.querySelector('.train-info__wagon').textContent = 'Вагон: ' + wagonNumber
+        document.querySelector('.train-info__seat').textContent = 'Місце: ' + seatNumber
+
+        document.querySelector('.js-cost-span').textContent = cost + ' грн'
+    }
+
+    document.querySelector('.form__cancel').onclick = () => {
+        document.querySelector('.buy').style.display = 'none';
+    }
+
+    document.querySelector('.end__button').onclick = () => {
+        let isInputEmpty = false
+        document.querySelectorAll('.name__input').forEach(input => {
+            if (input.value === '') isInputEmpty = true
+            document.querySelector('.end__message').textContent = "Уведіть прізвище та ім'я"
+            document.querySelector('.end__message').style.display = 'block'
+        })
+
+        if (isInputEmpty === false) {
+            document.querySelector('.end__message').textContent = 'Квиток додано до кошика'
+            document.querySelector('.end__message').style.display = 'block'
         }
     }
 }
