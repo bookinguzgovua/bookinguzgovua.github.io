@@ -9,7 +9,12 @@ const alertSubmit = document.querySelector('.submit__alert')
 
 const allTables = document.querySelectorAll('.table')
 
-let trainNumber, wagonNumber, seatNumber, cost
+
+let trainNumber, wagonNumber, seatNumber, cost;
+let routeLocation = '', routeDate = '', routeTimeDep = '', routeTimeArr = '';
+
+let localMemory = []
+
 
 function clearSelectSeat() {
     while (selectSeat.firstChild) {
@@ -20,6 +25,26 @@ function clearSelectWagon() {
     while (selectWagon.firstChild) {
         selectWagon.firstChild.remove();
     }
+}
+
+let seats = []; // Объявляем переменную seats в глобальной области видимости
+
+function updateSeatOptions(seatsPerWagon) {
+    clearSelectSeat();
+    seats = []; // Очищаем seats перед генерацией новых мест
+    while (seats.length < seatsPerWagon) {
+        const randomSeat = Math.floor(Math.random() * 20) + 1;
+        if (!seats.includes(randomSeat)) {
+            seats.push(randomSeat);
+        }
+    }
+
+    seats.forEach(seat => {
+        let option = document.createElement('option');
+        option.textContent = seat;
+        option.value = seat;
+        selectSeat.appendChild(option);
+    });
 }
 
 
@@ -296,16 +321,38 @@ buttonSubmit.onclick = () => {
 
                 document.querySelector('.table.kyiv-lviv').addEventListener('click', (event) => {
                     if (event.target.classList.contains('free__button')) {
+                        
+                        routeLocation = '';
+                        routeDate = '';
+                        routeTimeDep = '';
+                        routeTimeArr = '';
+
                         let button = event.target
 
                         const buttonTr = button.closest('tr')
                         const freeSeatCount = Number(buttonTr.querySelector('.free__seats').textContent)
                         const seatType = buttonTr.querySelector('.free__type').textContent
 
-                        let tdTrainNumber = buttonTr.querySelector('.table__number')
-                        if (tdTrainNumber === null) {
-                            tdTrainNumber = buttonTr.previousElementSibling.querySelector('.table__number')
+                        let tdRouteLocation = buttonTr.querySelector('.table__location');
+                        if (tdRouteLocation === null) tdRouteLocation = buttonTr.previousElementSibling.querySelector('.table__location')
+                        tdRouteLocation.querySelectorAll('span').forEach(span => {
+                            routeLocation += span.textContent + ' - ';
+                        })
+                        routeLocation = routeLocation.slice(0, -2)
+
+                        let tdRouteDate = buttonTr.querySelector('.table__date')
+                        if (tdRouteDate === null) {
+                            tdRouteDate = buttonTr.previousElementSibling.querySelector('.table__date')
                         }
+                        routeDate = tdRouteDate.querySelector('.table__dep-date').textContent
+
+                        let tdRouteTime = buttonTr.querySelector('.table__time')
+                        if (tdRouteTime === null) tdRouteTime = buttonTr.previousElementSibling.querySelector('.table__time')
+                        routeTimeDep = tdRouteTime.querySelectorAll('span')[0].textContent
+                        routeTimeArr = tdRouteTime.querySelectorAll('span')[1].textContent
+
+                        let tdTrainNumber = buttonTr.querySelector('.table__number')
+                        if (tdTrainNumber === null) tdTrainNumber = buttonTr.previousElementSibling.querySelector('.table__number')
                         trainNumber = tdTrainNumber.querySelector('span').textContent
 
                         document.querySelector('.seats').style.display = 'block'
@@ -324,37 +371,15 @@ buttonSubmit.onclick = () => {
                                     option.value = i;
                                     selectWagon.appendChild(option)
                                 }
-                                function generateRandomSeats() {
-                                    const seats = [];
-                                    while (seats.length < seatsPerWagon) {
-                                        const randomSeat = Math.floor(Math.random() * 53) + 1;
-                                        if (!seats.includes(randomSeat)) {
-                                            seats.push(randomSeat);
-                                        }
-                                    }
-                                    return seats;
-                                }
-                                seats = generateRandomSeats();
-                                function updateSeatOptions(wagonCount) {
-                                    clearSelectSeat()
-                                    seats = generateRandomSeats();
-                                    seats.forEach(seat => {
-                                        let option = document.createElement('option');
-                                        option.textContent = seat;
-                                        option.value = seat;
-                                        selectSeat.appendChild(option);
-                                    });
-                                }
-                                selectedWagon = parseInt(this.value);
-                                updateSeatOptions(selectedWagon);
+                                updateSeatOptions(seatsPerWagon);
                                 selectWagon.addEventListener('change', function () {
-                                    const selectedWagon = parseInt(this.value);
-                                    updateSeatOptions(selectedWagon);
+                                    updateSeatOptions(seatsPerWagon);
                                 });
 
                                 cost = '218, 34';
 
                                 break;
+
                             case 'Сидячий другого класу':
                                 clearSelectWagon()
                                 wagonCount = 3;
@@ -365,32 +390,9 @@ buttonSubmit.onclick = () => {
                                     option.value = i;
                                     selectWagon.appendChild(option)
                                 }
-                                function generateRandomSeats() {
-                                    const seats = [];
-                                    while (seats.length < seatsPerWagon) {
-                                        const randomSeat = Math.floor(Math.random() * 64) + 1;
-                                        if (!seats.includes(randomSeat)) {
-                                            seats.push(randomSeat);
-                                        }
-                                    }
-                                    return seats;
-                                }
-                                seats = generateRandomSeats();
-                                function updateSeatOptions(wagonCount) {
-                                    clearSelectSeat()
-                                    seats = generateRandomSeats();
-                                    seats.forEach(seat => {
-                                        let option = document.createElement('option');
-                                        option.textContent = seat;
-                                        option.value = seat;
-                                        selectSeat.appendChild(option);
-                                    });
-                                }
-                                selectedWagon = parseInt(this.value);
-                                updateSeatOptions(selectedWagon);
+                                updateSeatOptions(seatsPerWagon);
                                 selectWagon.addEventListener('change', function () {
-                                    const selectedWagon = parseInt(this.value);
-                                    updateSeatOptions(selectedWagon);
+                                    updateSeatOptions(seatsPerWagon);
                                 });
 
                                 cost = '451, 33'
@@ -406,32 +408,9 @@ buttonSubmit.onclick = () => {
                                     option.value = i;
                                     selectWagon.appendChild(option)
                                 }
-                                function generateRandomSeats() {
-                                    const seats = [];
-                                    while (seats.length < seatsPerWagon) {
-                                        const randomSeat = Math.floor(Math.random() * 54) + 1;
-                                        if (!seats.includes(randomSeat)) {
-                                            seats.push(randomSeat);
-                                        }
-                                    }
-                                    return seats;
-                                }
-                                seats = generateRandomSeats();
-                                function updateSeatOptions(wagonCount) {
-                                    clearSelectSeat()
-                                    seats = generateRandomSeats();
-                                    seats.forEach(seat => {
-                                        let option = document.createElement('option');
-                                        option.textContent = seat;
-                                        option.value = seat;
-                                        selectSeat.appendChild(option);
-                                    });
-                                }
-                                selectedWagon = parseInt(this.value);
-                                updateSeatOptions(selectedWagon);
+                                updateSeatOptions(seatsPerWagon);
                                 selectWagon.addEventListener('change', function () {
-                                    const selectedWagon = parseInt(this.value);
-                                    updateSeatOptions(selectedWagon);
+                                    updateSeatOptions(seatsPerWagon);
                                 });
 
                                 cost = '210, 85'
@@ -441,38 +420,16 @@ buttonSubmit.onclick = () => {
                                 clearSelectWagon()
                                 wagonCount = 5;
                                 seatsPerWagon = Math.floor(freeSeatCount / wagonCount)
+                                if (seatsPerWagon < 1) seatsPerWagon = 1;
                                 for (let i = 1; i <= wagonCount; i++) {
                                     let option = document.createElement('option')
                                     option.textContent = i;
                                     option.value = i;
                                     selectWagon.appendChild(option)
                                 }
-                                function generateRandomSeats() {
-                                    const seats = [];
-                                    while (seats.length < seatsPerWagon) {
-                                        const randomSeat = Math.floor(Math.random() * 40) + 1;
-                                        if (!seats.includes(randomSeat)) {
-                                            seats.push(randomSeat);
-                                        }
-                                    }
-                                    return seats;
-                                }
-                                seats = generateRandomSeats();
-                                function updateSeatOptions(wagonCount) {
-                                    clearSelectSeat()
-                                    seats = generateRandomSeats();
-                                    seats.forEach(seat => {
-                                        let option = document.createElement('option');
-                                        option.textContent = seat;
-                                        option.value = seat;
-                                        selectSeat.appendChild(option);
-                                    });
-                                }
-                                selectedWagon = parseInt(this.value);
-                                updateSeatOptions(selectedWagon);
+                                updateSeatOptions(seatsPerWagon);
                                 selectWagon.addEventListener('change', function () {
-                                    const selectedWagon = parseInt(this.value);
-                                    updateSeatOptions(selectedWagon);
+                                    updateSeatOptions(seatsPerWagon);
                                 });
 
                                 cost = '541, 57'
@@ -488,32 +445,9 @@ buttonSubmit.onclick = () => {
                                     option.value = i;
                                     selectWagon.appendChild(option)
                                 }
-                                function generateRandomSeats() {
-                                    const seats = [];
-                                    while (seats.length < seatsPerWagon) {
-                                        const randomSeat = Math.floor(Math.random() * 20) + 1;
-                                        if (!seats.includes(randomSeat)) {
-                                            seats.push(randomSeat);
-                                        }
-                                    }
-                                    return seats;
-                                }
-                                seats = generateRandomSeats();
-                                function updateSeatOptions(wagonCount) {
-                                    clearSelectSeat()
-                                    seats = generateRandomSeats();
-                                    seats.forEach(seat => {
-                                        let option = document.createElement('option');
-                                        option.textContent = seat;
-                                        option.value = seat;
-                                        selectSeat.appendChild(option);
-                                    });
-                                }
-                                selectedWagon = parseInt(this.value);
-                                updateSeatOptions(selectedWagon);
+                                updateSeatOptions(seatsPerWagon);
                                 selectWagon.addEventListener('change', function () {
-                                    const selectedWagon = parseInt(this.value);
-                                    updateSeatOptions(selectedWagon);
+                                    updateSeatOptions(seatsPerWagon);
                                 });
 
                                 cost = '1687, 98'
@@ -522,8 +456,6 @@ buttonSubmit.onclick = () => {
                         }
                     }
                 })
-
-
             }
         }
     }
@@ -557,15 +489,29 @@ buttonSubmit.onclick = () => {
         if (isInputEmpty === false) {
             document.querySelector('.end__message').textContent = 'Квиток додано до кошика'
             document.querySelector('.end__message').style.display = 'block'
+
+            setTimeout(() => {
+                document.querySelector('.end__message').textContent = ''
+                document.querySelector('.end__message').style.display = 'none'
+            }, 5000);
+            let ticket = {
+                train: trainNumber,
+                route: routeLocation,
+                date: routeDate,
+                timeDep: routeTimeDep,
+                timeArr: routeTimeArr,
+                wagon: wagonNumber,
+                seat: seatNumber,
+                cost: cost
+            }
+            localMemory.push(ticket)
+            localStorage.setItem('uz-tickets', JSON.stringify(localMemory))
+
         }
     }
 }
 
-
-
-
-
-
-
-
+document.querySelector('.shopping-cart').onclick = () => {
+    window.open('shopping cart.html')
+}
 
