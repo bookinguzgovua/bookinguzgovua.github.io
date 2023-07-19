@@ -1,6 +1,5 @@
 let localMemory = localStorage.getItem('uz-tickets');
 localMemory = JSON.parse(localMemory);
-console.log(localMemory)
 
 const table = document.querySelector('table')
 
@@ -42,6 +41,38 @@ if (localMemory !== null) {
         tr.appendChild(tdCost)
 
         table.appendChild(tr);
+    }
+
+    const trArray = table.querySelectorAll('tr')
+
+    for (let i = 0; i < trArray.length; i++){
+        const tr = trArray[i] 
+
+        if (tr.querySelector('td')) {
+            const tdArray = tr.querySelectorAll('td');
+
+            tdArray.forEach(td => {
+                const tdFirstText = td.textContent
+
+                td.addEventListener('mouseover', () => {
+                    td.textContent = 'Видалити квиток з кошика';
+                    td.style.color = 'tomato';
+                    td.style.cursor = 'pointer';
+
+                    td.addEventListener('click', () => {
+                        tr.remove();
+
+                        localMemory.splice(i - 1, 1)
+                        localStorage.setItem('uz-tickets', JSON.stringify(localMemory))
+                    })
+                })
+
+                td.addEventListener('mouseout', () => {
+                    td.textContent = tdFirstText;
+                    td.style.color = '#000';
+                })
+            })
+        }
     }
 }
 
