@@ -3,7 +3,10 @@ localMemory = JSON.parse(localMemory);
 
 const table = document.querySelector('table')
 
-if (localMemory !== null) {
+if (localMemory.length>0) {
+    table.style.display = 'table'
+    document.querySelector('h1').textContent = 'Кошик'
+
     for (let i = 0; i < localMemory.length; i++) {
         const tr = document.createElement('tr')
 
@@ -64,6 +67,11 @@ if (localMemory !== null) {
 
                         localMemory.splice(i - 1, 1)
                         localStorage.setItem('uz-tickets', JSON.stringify(localMemory))
+
+                        if (localMemory.length < 1) {
+                            table.style.display = 'none'
+                            document.querySelector('h1').textContent = 'Кошик пустий'
+                        }
                     })
                 })
 
@@ -74,5 +82,10 @@ if (localMemory !== null) {
             })
         }
     }
+}
+
+else {
+    table.style.display = 'none'
+    document.querySelector('h1').textContent = 'Кошик пустий'
 }
 
